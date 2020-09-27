@@ -4,16 +4,25 @@ import { findByTestAttr } from "../test/testUtils";
 import App from './App';
 
 import hookActions from "./actions/hookActions";
+import ReactPropTypesSecret from 'prop-types/lib/ReactPropTypesSecret';
 
 const mockGetSecretWord = jest.fn()
 
 /**
  * Setup function for app component
+ * @param {string} secretWord - desired secretWord state value for test
  * @returns {ReactWrapper}
  */   
-const setup = () => {
+const setup = (secretWord='party') => {
   mockGetSecretWord.mockClear()
   hookActions.getSecretWord = mockGetSecretWord;
+
+  const mockUseReducer = jest.fn().mockReturnValue([
+    { secretWord },
+    jest.fn()
+  ])
+
+  React.useReducer = mockUseReducer;
 
   // use mount because useEffect not called on shallow
   return mount(<App />)
@@ -41,5 +50,40 @@ describe('getSecretWord calls', () => {
     wrapper.setProps()
 
     expect(mockGetSecretWord).not.toHaveBeenCalled()
+  })
+})
+
+describe('secretWord is not null', () => {
+  let wrapper;
+  beforeEach(() => {
+    // give 'party' as a parameter so that secretWord is not null
+    wrapper = setup('party')
+  })
+  
+  test('renders app when secretWord is not null', () => {
+     const appComponent = findByTestAttr(wrapper, 'component-app')
+     expect(appComponent.exists()).toBe(true)
+  })
+
+  test('does not render spinner when secretWord is not null', () => {
+    const spinnerComponent = findByTestAttr(wrapper, 'spinner')
+    expect(spinnerComponent.exists()).toBe(false)
+  })
+})
+
+describe('secretWord is null', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = setup(null);
+  })
+
+  test('spinner component renders without error when secretWord is null', () => {
+    const spinnerComponent = findByTestAttr(wrapper, 'spinner')
+    expect(spinnerComponent.exists()).toBe(true)
+  })
+
+  test('App component does not render when secretWord is null', () => {
+    const appComponent = findByTestAttr(wrapper, 'component-app')
+    expect(appComponent.exists()).toBe(false)
   })
 })

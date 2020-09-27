@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import hookActions from './actions/hookActions';
 
+import Input from "./Input";
+
 /**
  *  @function reducer to update state, called automatically by dispatch
  *  @param state { object } - existing state
@@ -32,8 +34,24 @@ function App() {
     []
   )
 
+  if(!state.secretWord) {
+    return (
+      <div className='container' data-test='spinner'>
+        <div className='spinner-border' role='status'>
+          <span className='sr-only'>
+            Loading...
+          </span>
+          <p>
+            Loading secret word
+          </p>
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <div data-test='component-app'>
+    <div className='container' data-test='component-app'>
+      <Input secretWord={state.secretWord} />
     </div>
   );
 }
