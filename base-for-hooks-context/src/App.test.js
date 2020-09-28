@@ -4,7 +4,6 @@ import { findByTestAttr } from "../test/testUtils";
 import App from './App';
 
 import hookActions from "./actions/hookActions";
-import ReactPropTypesSecret from 'prop-types/lib/ReactPropTypesSecret';
 
 const mockGetSecretWord = jest.fn()
 
