@@ -3,7 +3,7 @@ const languageStrings = {
       congrats: 'Congratulations! You guessed the word!',
       submit: 'Submit',
       guessPrompt: 'Try to guess the secret word!',
-      guessInputPlaceHolder: 'enter guess',
+      guessInputPlaceholder: 'enter guess',
       guessColumnHeader: 'Guessed wordds',
       guessedWords: 'Guesses',
       matchingLettersColumnHeader: 'Matching Letters'
