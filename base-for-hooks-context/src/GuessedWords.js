@@ -7,6 +7,7 @@ import stringsModule from "./helpers/strings";
 const GuessedWords = (props) => {
   const language = React.useContext(languageContext)
   let contents
+
   if (props.guessedWords.length === 0) {
     contents = (
       <span data-test="guess-instructions">
@@ -20,14 +21,21 @@ const GuessedWords = (props) => {
         <td>{ word.letterMatchCount }</td>
       </tr>
     ));
+
     contents = (
       <div data-test="guessed-words">
-        <h3>{stringsModule.getStringByLanguage(language, 'guessedWords')}</h3>
+        <h3>
+          {stringsModule.getStringByLanguage(language, 'guessedWords')}
+        </h3>
         <table className="table table-sm">
           <thead className="thead-light">
             <tr>
-              <th>{stringsModule.getStringByLanguage(language, 'guessColumnHeader')}</th>
-              <th>{stringsModule.getStringByLanguage(language, 'matchingLettersColumnHeader')}</th>
+              <th>
+                {stringsModule.getStringByLanguage(language, 'guessColumnHeader')}
+              </th>
+              <th>
+                {stringsModule.getStringByLanguage(language, 'matchingLettersColumnHeader')}
+              </th>
             </tr>
           </thead>
           <tbody>
