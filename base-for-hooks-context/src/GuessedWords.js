@@ -8,12 +8,8 @@ const GuessedWords = () => {
   const [guessedWords] = guessedWordsContext.useGuessedWords()
   const language = React.useContext(languageContext)
   let contents
-<<<<<<< HEAD
 
   if (guessedWords.length === 0) {
-=======
-  if (props.guessedWords.length === 0) {
->>>>>>> parent of a1c0790... Add guessedWordsContext.js
     contents = (
       <span data-test="guess-instructions">
         {stringsModule.getStringByLanguage(language, 'guessPrompt')}
