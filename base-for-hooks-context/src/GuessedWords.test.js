@@ -3,6 +3,8 @@ import { shallow } from 'enzyme';
 import { findByTestAttr } from '../test/testUtils';
 import GuessedWords from './GuessedWords';
 
+import guessedWordsContext from "./contexts/guessedWordsContext";
+
 // const defaultProps = {
 //   guessedWords: [{ guessedWord: 'train', letterMatchCount: 3 }],
 // };
@@ -15,6 +17,8 @@ import GuessedWords from './GuessedWords';
 * @returns {ShallowWrapper}
 */
 const setup = (guessedWords=[]) => {
+   const mockUseGuessedWords = jest.fn().mockReturnValue([guessedWords, jest.fn()])
+   guessedWordsContext.useGuessedWords = mockUseGuessedWords;
    return shallow(<GuessedWords />)
 };
 

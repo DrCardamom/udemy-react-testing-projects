@@ -8,8 +8,12 @@ const GuessedWords = () => {
   const [guessedWords] = guessedWordsContext.useGuessedWords()
   const language = React.useContext(languageContext)
   let contents
+<<<<<<< HEAD
 
   if (guessedWords.length === 0) {
+=======
+  if (props.guessedWords.length === 0) {
+>>>>>>> parent of a1c0790... Add guessedWordsContext.js
     contents = (
       <span data-test="guess-instructions">
         {stringsModule.getStringByLanguage(language, 'guessPrompt')}
@@ -22,21 +26,14 @@ const GuessedWords = () => {
         <td>{ word.letterMatchCount }</td>
       </tr>
     ));
-
     contents = (
       <div data-test="guessed-words">
-        <h3>
-          {stringsModule.getStringByLanguage(language, 'guessedWords')}
-        </h3>
+        <h3>{stringsModule.getStringByLanguage(language, 'guessedWords')}</h3>
         <table className="table table-sm">
           <thead className="thead-light">
             <tr>
-              <th>
-                {stringsModule.getStringByLanguage(language, 'guessColumnHeader')}
-              </th>
-              <th>
-                {stringsModule.getStringByLanguage(language, 'matchingLettersColumnHeader')}
-              </th>
+              <th>{stringsModule.getStringByLanguage(language, 'guessColumnHeader')}</th>
+              <th>{stringsModule.getStringByLanguage(language, 'matchingLettersColumnHeader')}</th>
             </tr>
           </thead>
           <tbody>

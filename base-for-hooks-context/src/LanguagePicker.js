@@ -3,8 +3,8 @@ import propTypes from "prop-types";
 
 function LanguagePicker({ setLanguage }) {
    const languages = [
-      { code: 'en', symbol: '🇬🇧'},
-      { code: 'emoji', symbol: '😊'},
+      { code: 'en', symbol: '😊'},
+      { code: 'emoji', symbol: '🇬🇧'},
    ]
 
    const languageIcons = languages.map(lang => 
