@@ -24,7 +24,7 @@ const setup = ({ language, secretWord, success }) => {
    secretWord = secretWord || 'party'
    success = success || false;
 
-   return mount(
+   return mount(  
       <languageContext.Provider value={language}>
          <successContext.SuccessProvider value={[success, jest.fn()]}>
             <Input secretWord={secretWord} />
@@ -87,6 +87,7 @@ describe('state controlled input field', () => {
 }) 
 
 test('input component does not show when success is true', () => {
-   const wrapper = setup({secretWord: 'party', success: true})
+   const wrapper = setup({ secretWord: 'party', success: true})
    expect(wrapper.isEmptyRender()).toBe(true)
 })
+
