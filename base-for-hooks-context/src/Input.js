@@ -5,7 +5,7 @@ import successContext from "./contexts/successContext";
 import languageContext from "./contexts/languageContext";
 import stringsModule from "./helpers/strings";
 
-const Input = ({ secretWord }) => {
+function Input({ secretWord }) {
    const language = React.useContext(languageContext)
    const [success, setSuccess] = successContext.useSuccess()
    const [ currentGuess, setCurrentGuess ] = React.useState('');
@@ -14,12 +14,12 @@ const Input = ({ secretWord }) => {
 
    return (
       <div data-test='component-input'>
-         <form action="">
+         <form className='form-inline'>
             <input 
-               className='mb-2 mx-sm-3' 
                data-test='input-box'
+               className='mb-2 mx-sm-3' 
                type='text'
-               value={currentGuess}
+               value={currentGuess} 
                onChange={e => setCurrentGuess(e.target.value)}
                placeholder={stringsModule.getStringByLanguage(language, 'guessInputPlaceholder')}
             />
