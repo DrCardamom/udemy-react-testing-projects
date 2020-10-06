@@ -12,7 +12,7 @@ import GuessedWords from "./GuessedWords";
 
 /** 
  *  @function reducer to update state, called automatically by dispatch
- *  @param state { object } - existing state
+*  @param state { object } - existing state
  *  @param action { object } - contains 'type' and 'payload' properties for the state update. For example: { type: "setSecretWord", payload: "party" }
  *  @returns { object } - new state 
  */
@@ -63,6 +63,7 @@ function App() {
   return (
     <div className='container' data-test='component-app'>
       <h1>Jotto</h1>
+      <p>The secret word is {state.secretWord}</p>
       <languageContext.Provider value={state.language}>
         <LanguagePicker setLanguage={setLanguage} />
         <guessedWordsContext.GuessedWordsProvider>

@@ -27,7 +27,7 @@ const setup = ({ success, language }) => {
       <successContext.SuccessProvider value={[success, jest.fn()]}>
         <Congrats />
       </successContext.SuccessProvider>
-    </languageContext.Provider>
+    </languageContext.Provider> 
   )
 }
 

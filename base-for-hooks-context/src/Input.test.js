@@ -5,6 +5,7 @@ import Input from "./Input";
 import { findByTestAttr, checkProps } from "../test/testUtils";
 import languageContext from "./contexts/languageContext";
 import successContext from "./contexts/successContext";
+import guessedWordsContext from "./contexts/guessedWordsContext";
 
 // /**
 //  * Setup function for Input component
@@ -27,7 +28,9 @@ const setup = ({ language, secretWord, success }) => {
    return mount(  
       <languageContext.Provider value={language}>
          <successContext.SuccessProvider value={[success, jest.fn()]}>
-            <Input secretWord={secretWord} />
+            <guessedWordsContext.GuessedWordsProvider>
+               <Input secretWord={secretWord} />
+            </guessedWordsContext.GuessedWordsProvider>
          </successContext.SuccessProvider>
       </languageContext.Provider>
    )

@@ -22,6 +22,7 @@ const GuessedWords = () => {
         <td>{ word.letterMatchCount }</td>
       </tr>
     ));
+    
     contents = (
       <div data-test="guessed-words">
         <h3>{stringsModule.getStringByLanguage(language, 'guessedWords')}</h3>
